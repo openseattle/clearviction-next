@@ -73,7 +73,7 @@ export default function GetStartedPage() {
           title="Step 2: Eligibility"
           bodyText={`Once you have your records and forms gathered, use our eligibilty calculator to determine whether you are eligible to vacate your misdemeanor conviction. It is expected to take 10-30 minutes.`}
           ctaText="Access Calculator"
-          ctaLink='"/calculator/initial-landing"'
+          ctaLink='"/calculator/head-initial-1-cont"'
         >
           <SectionContainer>
             <Grid container sx={{ alignItems: "center" }}>
