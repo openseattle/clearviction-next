@@ -9,6 +9,7 @@ export const calculatorPagesBySlugQuery = groq`
     _id,
     title,
     content,
+    image,
     isQuestion,
     isFinalPage,
     isEligible,
