@@ -19,6 +19,6 @@
     "noImplicitThis": true,
     "strictNullChecks": true
   },
-  "include": ["next-env.d.ts", "mui.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "mui.d.ts", "**/*.ts", "**/*.tsx", "cypress/e2e/calculator.cy.js", "cypress/e2e/sponsors.cy.js", "cypress/e2e/volunteer.cy.js"],
   "exclude": ["node_modules"]
 }
