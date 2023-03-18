@@ -1,3 +1,4 @@
+// import { Image } from "@mui/icons-material";
 import HistoryIcon from "@mui/icons-material/History";
 import {
   Box,
@@ -12,6 +13,9 @@ import {
   Typography,
 } from "@mui/material";
 import { PortableText } from "@portabletext/react";
+import sanityClient from '@sanity/client';
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
 import { useState } from "react";
 import {
   getCalculatorConfig,
@@ -22,8 +26,34 @@ import {
 import ExternalButton from "../../components/ExternalButton";
 import portableTextComponents from "../../utils/portableTextComponents";
 
-export default function CalculatorSlugRoute({ page, calculatorConfig }) {
+const configuredSanityClient = sanityClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  useCdn: true
+});
+
+export default function CalculatorSlugRoute({ page, calculatorConfig, mySanityData }) {
+  const imageProps = useNextSanityImage( 
+    configuredSanityClient,
+    mySanityData
+  );
+
+
   const [open, setOpen] = useState(false);
+  console.log('page => ', page);
+  console.log("page image => ", typeof page.image?.asset._ref);
+  let arr = page.image?.asset._ref.split('-') || 0;
+  console.log(arr);
+  let url;
+
+  let baseUrl = `https://cdn.sanity.io/images`;
+  console.log('baseUrl =>', baseUrl);
+  if(arr){
+    url = `${baseUrl}/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${arr[1]}-${arr[2]}.${arr[3]}`;
+    console.log('url => ', url);
+  }
+
+
   return (
     <>
       <Container
@@ -42,6 +72,19 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
             components={portableTextComponents}
           />
         </Box>
+        {
+          page.image &&
+          <Container id="hello-world" sx={{ my: 6, width: "100%", height: "280px" }} position='relative' >
+            {/* <img alt="img" src={url} /> */}
+            <Image {...imageProps}
+              alt="img"
+              src={url}
+              fill
+              position="initial"
+            />
+          </Container>
+          
+        }
         <Container maxWidth="xs" sx={{ mb: 4 }}>
           <Stack gap={2}>
             {page.choices &&
