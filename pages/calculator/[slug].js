@@ -8,6 +8,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Grid,
   Link,
   Stack,
   Typography,
@@ -32,6 +33,8 @@ const configuredSanityClient = sanityClient({
   useCdn: true,
 });
 
+const BASE_IMAGE_URL = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}`;
+
 export default function CalculatorSlugRoute({
   page,
   calculatorConfig,
@@ -40,17 +43,11 @@ export default function CalculatorSlugRoute({
   const imageProps = useNextSanityImage(configuredSanityClient, mySanityData);
 
   const [open, setOpen] = useState(false);
-  console.log("page => ", page);
-  console.log("page image => ", typeof page.image?.asset._ref);
-  let arr = page.image?.asset._ref.split("-") || 0;
-  console.log(arr);
-  let url;
+  let imageUrl;
 
-  let baseUrl = `https://cdn.sanity.io/images`;
-  console.log("baseUrl =>", baseUrl);
-  if (arr) {
-    url = `${baseUrl}/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${arr[1]}-${arr[2]}.${arr[3]}`;
-    console.log("url => ", url);
+  if(page.image){
+    let metaData = page.image.asset._ref.split("-") || 0;
+    imageUrl = `${BASE_IMAGE_URL}/${metaData[1]}-${metaData[2]}.${metaData[3]}`;
   }
 
   return (
@@ -70,23 +67,28 @@ export default function CalculatorSlugRoute({
             value={page.content}
             components={portableTextComponents}
           />
-        </Box>
-        {page.image && (
-          <Container
-            id="hello-world"
-            sx={{ my: 6, width: "100%", height: "280px" }}
-            position="relative"
+
+        { page.image && (
+         <Container
+            sx={{ 
+              width: "100%", 
+              height: "10em", 
+              position: "relative" 
+            }}
           >
-            {/* <img alt="img" src={url} /> */}
             <Image
               {...imageProps}
               alt="img"
-              src={url}
+              className="calc-image"
+              src={imageUrl}
               fill
-              position="initial"
+              position="relative"
             />
           </Container>
         )}
+        
+        </Box>
+
         <Container maxWidth="xs" sx={{ mb: 4 }}>
           <Stack gap={2}>
             {page.choices &&
