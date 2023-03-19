@@ -45,6 +45,7 @@ export default function CalculatorSlugRoute({
   const [open, setOpen] = useState(false);
   let imageUrl;
 
+
   if(page.image){
     let metaData = page.image.asset._ref.split("-") || 0;
     imageUrl = `${BASE_IMAGE_URL}/${metaData[1]}-${metaData[2]}.${metaData[3]}`;
