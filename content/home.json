@@ -28,13 +28,13 @@
         {
           "id": "how-it-works-item2",
           "title": "Assess",
-          "body": "This helps determine your vacation eligibility in Washington.",
+          "body": "You answer a few simple yes/no questions.",
           "imgsrc": "/illustrations/calculator.svg"
         },
         {
           "id": "how-it-works-item3",
           "title": "Calculate",
-          "body": "We break down the laws into understandable language.",
+          "body": "This helps determine your vacation eligibility in Washington.",
           "imgsrc": "/illustrations/notetaking.svg"
         }
       ]
