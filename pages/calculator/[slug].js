@@ -1,4 +1,3 @@
-// import { Image } from "@mui/icons-material";
 import HistoryIcon from "@mui/icons-material/History";
 import {
   Box,
@@ -8,7 +7,6 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  Grid,
   Link,
   Stack,
   Typography,
@@ -17,7 +15,7 @@ import { PortableText } from "@portabletext/react";
 import sanityClient from "@sanity/client";
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   getCalculatorConfig,
   getCalculatorPageBySlug,
@@ -40,16 +38,20 @@ export default function CalculatorSlugRoute({
   calculatorConfig,
   mySanityData,
 }) {
+  
   const imageProps = useNextSanityImage(configuredSanityClient, mySanityData);
 
   const [open, setOpen] = useState(false);
-  let imageUrl;
+  const [imageUrl, setImageUrl] = useState("");
 
+  useEffect(() => {
 
-  if(page.image){
-    let metaData = page.image.asset._ref.split("-") || 0;
-    imageUrl = `${BASE_IMAGE_URL}/${metaData[1]}-${metaData[2]}.${metaData[3]}`;
-  }
+    if (page.image) {
+      let metaData = page.image.asset._ref.split("-") || 0;
+      setImageUrl(`${BASE_IMAGE_URL}/${metaData[1]}-${metaData[2]}.${metaData[3]}`)
+    }
+  }, [page.image])
+
 
   return (
     <>
@@ -69,25 +71,24 @@ export default function CalculatorSlugRoute({
             components={portableTextComponents}
           />
 
-        { page.image && (
-         <Container
-            sx={{ 
-              width: "100%", 
-              height: "10em", 
-              position: "relative" 
-            }}
-          >
-            <Image
-              {...imageProps}
-              alt="img"
-              className="calc-image"
-              src={imageUrl}
-              fill
-              position="relative"
-            />
-          </Container>
-        )}
-        
+          {page.image && (
+            <Container
+              sx={{
+                width: "100%",
+                height: "10em",
+                position: "relative",
+              }}
+            >
+              <Image
+                {...imageProps}
+                alt="img"
+                className="calc-image"
+                src={imageUrl}
+                fill
+                position="relative"
+              />
+            </Container>
+          )}
         </Box>
 
         <Container maxWidth="xs" sx={{ mb: 4 }}>
