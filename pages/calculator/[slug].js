@@ -15,7 +15,7 @@ import { PortableText } from "@portabletext/react";
 import sanityClient from "@sanity/client";
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   getCalculatorConfig,
   getCalculatorPageBySlug,
@@ -38,19 +38,15 @@ export default function CalculatorSlugRoute({
   calculatorConfig,
   mySanityData,
 }) {
-  
   const imageProps = useNextSanityImage(configuredSanityClient, mySanityData);
 
   const [open, setOpen] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
+  let imageUrl;
 
-  useEffect(() => {
-
-    if (page.image) {
-      let metaData = page.image.asset._ref.split("-") || 0;
-      setImageUrl(`${BASE_IMAGE_URL}/${metaData[1]}-${metaData[2]}.${metaData[3]}`)
-    }
-  }, [page.image])
+  if (page.image) {
+    let metaData = page.image.asset._ref.split("-") || 0;
+    imageUrl = `${BASE_IMAGE_URL}/${metaData[1]}-${metaData[2]}.${metaData[3]}`;
+  }
 
 
   return (
