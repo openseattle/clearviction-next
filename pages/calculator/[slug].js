@@ -48,7 +48,6 @@ export default function CalculatorSlugRoute({
     imageUrl = `${BASE_IMAGE_URL}/${metaData[1]}-${metaData[2]}.${metaData[3]}`;
   }
 
-
   return (
     <>
       <Container
@@ -82,6 +81,7 @@ export default function CalculatorSlugRoute({
                 src={imageUrl}
                 fill
                 position="relative"
+                priority={true}
               />
             </Container>
           )}
