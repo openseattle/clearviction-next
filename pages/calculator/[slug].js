@@ -1,4 +1,4 @@
-import HistoryIcon from '@mui/icons-material/History';
+import HistoryIcon from "@mui/icons-material/History";
 import {
   Box,
   Button,
@@ -10,31 +10,31 @@ import {
   Link,
   Stack,
   Typography,
-} from '@mui/material';
-import { light } from '@mui/material/styles/createPalette';
-import { PortableText } from '@portabletext/react';
-import { useState } from 'react';
+} from "@mui/material";
+import { light } from "@mui/material/styles/createPalette";
+import { PortableText } from "@portabletext/react";
+import { useState } from "react";
 import {
   getCalculatorConfig,
   getCalculatorPageBySlug,
   getCalculatorPagePaths,
-} from 'utils/sanity.client';
+} from "utils/sanity.client";
 
-import ExternalButton from '../../components/ExternalButton';
-import portableTextComponents from '../../utils/portableTextComponents';
+import ExternalButton from "../../components/ExternalButton";
+import portableTextComponents from "../../utils/portableTextComponents";
 
 export default function CalculatorSlugRoute({ page, calculatorConfig }) {
   const [open, setOpen] = useState(false);
   return (
     <>
       <Container
-        maxWidth='md'
+        maxWidth="md"
         sx={{
-          minHeight: '700px',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
+          minHeight: "700px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <Box mb={4}>
@@ -43,19 +43,19 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
             components={portableTextComponents}
           />
         </Box>
-        <Container maxWidth='xs' sx={{ mb: 4 }}>
+        <Container maxWidth="xs" sx={{ mb: 4 }}>
           <Stack gap={2}>
             {page.choices &&
               page.choices.map((choice) => {
                 const linkTo = choice.linkTo
                   ? `/calculator/${choice.linkTo.slug.current}`
-                  : '#';
+                  : "#";
                 const href = choice.isExternalLink ? choice.url : linkTo;
                 return (
                   <Button
                     key={choice._key}
-                    variant='contained'
-                    color='primary'
+                    variant="contained"
+                    color="primary"
                     href={href}
                   >
                     {choice.label}
@@ -64,8 +64,8 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
               })}
             {page.isQuestion && (
               <Button
-                variant='outlined'
-                color='primary'
+                variant="outlined"
+                color="primary"
                 onClick={() => setOpen(true)}
               >
                 {calculatorConfig.unknownAnswer.promptText}
@@ -74,8 +74,8 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
             {page.isFinalPage && (
               <>
                 <ExternalButton
-                  variant='contained'
-                  color='primary'
+                  variant="contained"
+                  color="primary"
                   href={
                     page.isUndetermined
                       ? calculatorConfig.feedback.isUndeterminedUrl
@@ -85,16 +85,16 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
                   {calculatorConfig.feedback.linkText}
                 </ExternalButton>
                 <Link
-                  sx={{ textAlign: 'center' }}
+                  sx={{ textAlign: "center" }}
                   href={
                     calculatorConfig.checkAnotherConviction.linkTo.slug.current
                   }
                 >
                   <Box
                     sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                       gap: 1,
                     }}
                   >
@@ -107,8 +107,8 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
           </Stack>
         </Container>
         {page.isFinalPage && (
-          <Box maxWidth='60ch' textAlign='center'>
-            <Typography variant='caption' sx={{ fontWeight: 'light' }}>
+          <Box maxWidth="60ch" textAlign="center">
+            <Typography variant="caption" sx={{ fontWeight: "light" }}>
               {calculatorConfig.legalDisclaimer}
             </Typography>
           </Box>
@@ -118,10 +118,10 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
       <Dialog
         open={open}
         onClose={() => setOpen(false)}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id='alert-dialog-title'>
+        <DialogTitle id="alert-dialog-title">
           {calculatorConfig.unknownAnswer.header}
         </DialogTitle>
         <DialogContent>
@@ -136,26 +136,26 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
           </Button>
         </DialogActions>
       </Dialog>
-      <Box 
-        sx={{ 
-          textAlign: 'center', 
-          mb: '30px', 
-          color: 'black', 
-          fontWeight: 500, 
-          fontSize: '16px',
+      <Box
+        sx={{
+          textAlign: "center",
+          mb: "30px",
+          color: "black",
+          fontWeight: 500,
+          fontSize: "16px",
         }}
-        >
-        <Link 
-        sx = {{
-          color: 'text.primary',
-            '&:hover': {
-              color: 'primary.main',
-            }
-        }}
-          underline='hover' 
-          target='_blank' 
-          rel='noreferrer' 
-          href='https://docs.google.com/forms/d/e/1FAIpQLSf8JvZfgYPBV36Ow4Qn_KyxkdmzI3szvZej-L1MbFO9vSGKWQ/viewform'
+      >
+        <Link
+          sx={{
+            color: "text.primary",
+            "&:hover": {
+              color: "primary.main",
+            },
+          }}
+          underline="hover"
+          target="_blank"
+          rel="noreferrer"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf8JvZfgYPBV36Ow4Qn_KyxkdmzI3szvZej-L1MbFO9vSGKWQ/viewform"
         >
           Report an error
         </Link>
