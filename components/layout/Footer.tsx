@@ -74,19 +74,21 @@ export default function Footer() {
             <Typography variant="h4">Links</Typography>
           </Box>
           <Grid container spacing={1} maxWidth={300}>
-            {navItems.map((item) => (
-              <Grid key={item.text} item xs={6}>
-                <Link
-                  href={item.href}
-                  color="primary.contrastText"
-                  underline="hover"
-                  fontSize={18}
-                  noWrap
-                >
-                  {item.text}
-                </Link>
-              </Grid>
-            ))}
+            {navItems
+              .filter((item) => item.text !== "Access Calculator")
+              .map((item) => (
+                <Grid key={item.text} item xs={6}>
+                  <Link
+                    href={item.href}
+                    color="primary.contrastText"
+                    underline="hover"
+                    fontSize={18}
+                    noWrap
+                  >
+                    {item.text}
+                  </Link>
+                </Grid>
+              ))}
           </Grid>
         </Box>
 

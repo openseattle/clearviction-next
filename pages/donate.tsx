@@ -7,6 +7,7 @@ import Script from "next/script";
 
 import AccordionBuilder from "../components/AccordionBuilder";
 import DonationForm from "../components/DonationForm";
+import externalLinks from "../components/externalLinks";
 import { GridItemCard } from "../components/GridItem";
 import HeroBanner from "../components/HeroBanner";
 import { PaperSection } from "../components/PaperSection";
@@ -14,6 +15,8 @@ import SectionContainer from "../components/SectionContainer";
 import content from "../content/donate-faqs";
 
 export default function DonatePage() {
+  externalLinks();
+
   return (
     <>
       <Script src="https://donorbox.org/widget.js" />

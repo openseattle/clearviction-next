@@ -118,7 +118,7 @@ let theme = createTheme({
     },
 
     caption: {
-      fontWeight: "lighter",
+      fontWeight: "light",
       fontSize: "14px",
       letterSpacing: "0.4px",
     },

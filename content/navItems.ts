@@ -28,6 +28,10 @@ const navItems: navItem[] = [
     href: "contact",
     text: "Contact",
   },
+  {
+    href: "/calculator/head-initial-1-cont",
+    text: "Access Calculator",
+  },
 ];
 
 export default navItems;

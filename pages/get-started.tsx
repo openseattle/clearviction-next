@@ -4,6 +4,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import MuiMarkdown from "mui-markdown";
 
 import AccordionBuilder from "../components/AccordionBuilder";
+import externalLinks from "../components/externalLinks";
 import { FactCard } from "../components/FactCard";
 import { GetStartedStep } from "../components/GetStartedStep";
 import HeroBanner from "../components/HeroBanner";
@@ -13,6 +14,8 @@ import content from "../content/get-started";
 export default function GetStartedPage() {
   const theme = useTheme();
   const matchesXS = useMediaQuery(theme.breakpoints.down("sm"));
+
+  externalLinks();
 
   return (
     <>

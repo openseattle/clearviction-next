@@ -3,6 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import AccordionBuilder from "../components/AccordionBuilder";
+import externalLinks from "../components/externalLinks";
 import { GridItemCard } from "../components/GridItem";
 import HeroBanner from "../components/HeroBanner";
 import { PaperSection } from "../components/PaperSection";
@@ -12,6 +13,8 @@ import content from "../content/why-vacate";
 export default function WhyVacatePage() {
   const theme = useTheme();
   const matchesXS = useMediaQuery(theme.breakpoints.down("sm"));
+
+  externalLinks();
 
   return (
     <>

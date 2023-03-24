@@ -46,6 +46,15 @@ export default function Header() {
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem key="disclaimer">
+          <Typography
+            variant="caption"
+            sx={{ mb: 2, px: 2, textAlign: "center" }}
+          >
+            The information on this site is not, nor should it be considered
+            legal advice.
+          </Typography>
+        </ListItem>
       </List>
     </Box>
   );
@@ -68,27 +77,26 @@ export default function Header() {
             >
               <Menu fontSize="large" />
             </IconButton>
-            <Box sx={{ display: { xs: "none", xl: "flex" }, gap: 2 }}>
+            <Box
+              sx={{
+                display: { xs: "none", xl: "flex" },
+                gap: 2,
+              }}
+            >
               {navItems.map((item) => (
                 <Button
                   key={item.text}
                   href={item.href}
-                  variant="text"
+                  variant={
+                    item.text === "Access Calculator" ? "contained" : "text"
+                  }
                   color="neutral"
                   size="small"
-                  sx={{ borderRadius: 1, whiteSpace: "nowrap" }}
+                  sx={{ whiteSpace: "nowrap" }}
                 >
                   {item.text}
                 </Button>
               ))}
-              <Button
-                sx={{ whiteSpace: "nowrap" }}
-                variant="contained"
-                color="neutral"
-                href="/calculator/head-initial-1-cont"
-              >
-                Access Calculator
-              </Button>
             </Box>
           </Toolbar>
         </Container>
@@ -105,9 +113,6 @@ export default function Header() {
           anchor="right"
         >
           {drawer}
-          <Typography variant="caption" sx={{ mb: 2, px: 2 }}>
-            The content on this website should not be treated as legal advice.
-          </Typography>
         </Drawer>
       </Box>
     </>
