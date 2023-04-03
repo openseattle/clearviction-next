@@ -17,41 +17,38 @@ interface HeroBannerProps {
   ctaText?: string;
   ctaLink?: string;
   children?: JSX.Element;
+  overrideStyles?: SxProps;
 }
 
 const heroStyles: SxProps = {
   backgroundColor: "primary.dark",
   color: "primary.contrastText",
-  py: 4,
+  py: 8,
 };
 
 export default function HeroBanner({
   heading,
-  smallHeading = heading,
   subheading,
   imgsrc,
   ctaText,
   ctaLink,
   children,
+  overrideStyles,
 }: HeroBannerProps) {
   return (
-    <Box sx={heroStyles} textAlign={{ xs: "center", md: "left" }}>
+    <Box sx={overrideStyles || heroStyles} textAlign="left">
       <SectionContainer>
-        <Typography
-          variant="h1"
-          gutterBottom
-          sx={{ display: { xs: "none", sm: "block" } }}
-        >
+        <Typography variant="h1" sx={{ display: "block" }}>
           {heading}
         </Typography>
-        <Typography
-          variant="h1"
-          gutterBottom
-          sx={{ display: { xs: "block", sm: "none" } }}
+        <Box
+          sx={{
+            display: "flex",
+            gap: 4,
+            flexWrap: "wrap",
+            flexDirection: { sm: "column", md: "row" },
+          }}
         >
-          {smallHeading}
-        </Typography>
-        <Box sx={{ display: "flex", gap: 4 }}>
           <Box sx={{ flex: 1 }}>
             <Box sx={{ mb: 4 }}>
               <MuiMarkdown
@@ -60,7 +57,6 @@ export default function HeroBanner({
                     component: Typography,
                     props: {
                       variant: "subtitle1",
-                      gutterBottom: true,
                     } as TypographyProps,
                   },
                   span: {
@@ -73,21 +69,42 @@ export default function HeroBanner({
               </MuiMarkdown>
             </Box>
             {ctaText && ctaLink && (
-              <Button variant="contained" color="neutral" href={ctaLink}>
+              <Button
+                variant="contained"
+                color="primary"
+                href={ctaLink}
+                sx={{
+                  px: 4,
+                  "&:hover": {
+                    color: "primary.dark",
+                    backgroundColor: "secondary.main",
+                  },
+                }}
+              >
                 {ctaText}
               </Button>
             )}
           </Box>
-          <Box
-            sx={{
-              display: { xs: "none", md: "flex" },
-              flex: 1,
-              justifyContent: "center",
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            {imgsrc ? <img src={imgsrc} alt="" /> : children}
-          </Box>
+          {(imgsrc || children) && (
+            <Box
+              sx={{
+                display: "flex",
+                margin: "30px auto",
+                justifyContent: "center",
+              }}
+            >
+              {imgsrc ? (
+                <Box
+                  component="img"
+                  src={imgsrc}
+                  alt=""
+                  sx={{ width: "100%" }}
+                />
+              ) : (
+                children
+              )}
+            </Box>
+          )}
         </Box>
       </SectionContainer>
     </Box>

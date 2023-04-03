@@ -10,8 +10,6 @@ import {
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
 
-import ExternalButton from "./ExternalButton";
-
 export default function Section({ section, index, sanityClient, ...props }) {
   const imageProps = useNextSanityImage(sanityClient, section.image);
 
@@ -54,7 +52,7 @@ export default function Section({ section, index, sanityClient, ...props }) {
             </Typography>
           )}
           {section.callToAction && (
-            <ExternalButton
+            <Button
               variant="contained"
               color="primary"
               size="large"

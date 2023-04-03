@@ -6,25 +6,35 @@ import {
   CardContent,
   CardMedia,
   Container,
-  Divider,
   Grid,
   Typography,
 } from "@mui/material";
 
 import { Fact } from "../components/Fact";
 import HeroBanner from "../components/HeroBanner";
+import { PaperSection } from "../components/PaperSection";
+import SectionContainer from "../components/SectionContainer";
 import content from "../content/get-involved";
 
 export default function GetInvolvedPage() {
   return (
     <>
-      <Box sx={{ color: "#ffffff", pb: 16, pt: 4, px: 3, bgcolor: "#2f3554" }}>
+      <Box sx={{ bgcolor: "#2f3554", pb: "64px" }}>
         <HeroBanner
           heading="Get Involved"
           subheading="There are many ways to participate with the Clearviction team, and we appreciate all of them!"
+          overrideStyles={{
+            pb: 0,
+            pt: 8,
+            color: "primary.contrastText",
+          }}
         />
 
-        <Grid container spacing={2} sx={{ maxWidth: "1200px", m: "auto" }}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ maxWidth: "1200px", m: "auto", mt: -8 }}
+        >
           {content.waysToParticipate.map((card) => (
             <Grid item xs={12} sm={12} md={4} key={card.id}>
               <Box display="flex" justifyContent="center" key={card.id}>
@@ -32,7 +42,7 @@ export default function GetInvolvedPage() {
                   sx={{
                     p: 1,
                     pb: 0,
-                    maxWidth: 300,
+                    maxWidth: 275,
                     textAlign: "center",
                     display: "flex",
                     flexDirection: "column",
@@ -66,13 +76,7 @@ export default function GetInvolvedPage() {
         </Grid>
       </Box>
       <Volunteer />
-      <Container maxWidth="md">
-        <Divider sx={{ my: 8, scrollMarginTop: "4em", maxWidth: "md" }} />
-      </Container>
       <Partner />
-      <Container maxWidth="md">
-        <Divider sx={{ my: 8, scrollMarginTop: "4em", maxWidth: "md" }} />
-      </Container>
     </>
   );
 }
@@ -80,12 +84,7 @@ export default function GetInvolvedPage() {
 function Volunteer() {
   return (
     <>
-      <Container
-        component="section"
-        id="volunteer"
-        maxWidth="md"
-        sx={{ my: 8, scrollMarginTop: "4em" }}
-      >
+      <SectionContainer id="volunteer" maxWidth="md">
         <Typography sx={{ my: 8 }} variant="h2">
           {content.volunteerPage.header}
         </Typography>
@@ -105,9 +104,9 @@ function Volunteer() {
             </Grid>
           ))}
         </Grid>
-      </Container>
-      <Container maxWidth="md" sx={{ my: 8, scrollMarginTop: "4em" }}>
-        <Typography sx={{ my: 8 }} variant="h2">
+      </SectionContainer>
+      <SectionContainer maxWidth="md">
+        <Typography variant="h2">
           {content.volunteerPage.openRole.title}
         </Typography>
 
@@ -122,7 +121,7 @@ function Volunteer() {
             borderRadius: "6px",
           }}
         />
-      </Container>
+      </SectionContainer>
     </>
   );
 }
@@ -130,54 +129,44 @@ function Volunteer() {
 function Partner() {
   return (
     <>
-      <Container
-        id="partner-with-us"
-        sx={{
-          my: 8,
-          scrollMarginTop: "4em",
-        }}
-        maxWidth="md"
-      >
+      <SectionContainer id="partner-with-us" maxWidth="md">
         <Typography sx={{ my: 8 }} variant="h2">
           {content.partnerPage.header[0]}
         </Typography>
-        <Typography sx={{ my: 3, padding: 2 }} variant="body1">
-          {content.partnerPage.text[0]}
-        </Typography>
-        <Container sx={{ display: "flex", justifyContent: "center", my: 8 }}>
+        <Typography variant="body1">{content.partnerPage.text[0]}</Typography>
+        <Container sx={{ display: "flex", justifyContent: "center", py: 4 }}>
           <Button
-            sx={{
-              margin: "30px auto 50px",
-              minWidth: "240px",
-              boxShadow: "rgb(0 0 0 / 20%) 0px 2px 4px;",
-            }}
             variant="contained"
+            color="primary"
+            sx={{ px: 8 }}
             href={content.partnerPage.href}
           >
             Contact Us
           </Button>
         </Container>
-      </Container>
-      <Container>
-        <Grid container>
-          <Grid item xs={12} sm={6}>
-            <Box display="flex" justifyContent="center">
-              <Box component="img" src={content.partnerPage.imgsrc} />
-            </Box>
+      </SectionContainer>
+      <SectionContainer maxWidth="md">
+        <PaperSection title="" sx={{ margin: "auto", p: 4 }}>
+          <Grid container>
+            <Grid item xs={12} sm={6}>
+              <Box display="flex" justifyContent="center" sx={{ px: 2 }}>
+                <Box component="img" src={content.partnerPage.imgsrc} />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography sx={{ my: 8, scrollMarginTop: "4em" }} variant="h3">
+                {content.partnerPage.header[1]}
+              </Typography>
+              <Typography sx={{ my: 3 }} variant="body1">
+                {content.partnerPage.text[1]}
+              </Typography>
+              <Typography sx={{ my: 3 }} variant="body1">
+                {content.partnerPage.text[2]}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography sx={{ my: 8, scrollMarginTop: "4em" }} variant="h3">
-              {content.partnerPage.header[1]}
-            </Typography>
-            <Typography sx={{ my: 3 }} variant="body1">
-              {content.partnerPage.text[1]}
-            </Typography>
-            <Typography sx={{ my: 3 }} variant="body1">
-              {content.partnerPage.text[2]}
-            </Typography>
-          </Grid>
-        </Grid>
-      </Container>
+        </PaperSection>
+      </SectionContainer>
     </>
   );
 }

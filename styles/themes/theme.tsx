@@ -65,36 +65,42 @@ let theme = createTheme({
       fontSize: "84px",
       fontFamily: sintony.style.fontFamily,
       fontWeight: "normal",
+      margin: "20px auto",
     },
     h2: {
       fontFamily: sintony.style.fontFamily,
       fontWeight: "normal",
       fontSize: "56px",
       letterSpacing: "-0.5px",
+      marginBottom: "1.5em",
     },
     h3: {
       fontFamily: sintony.style.fontFamily,
       fontWeight: "normal",
       fontSize: "45px",
       letterSpacing: "0px",
+      marginBottom: "0.5em",
     },
     h4: {
       fontFamily: sintony.style.fontFamily,
       fontWeight: "bold",
       fontSize: "32px",
       letterSpacing: "0.25px",
+      marginBottom: "0.5em",
     },
     h5: {
       fontFamily: sintony.style.fontFamily,
       fontWeight: "bold",
       fontSize: "22px",
       letterSpacing: "0px",
+      marginBottom: "0.5em",
     },
     h6: {
       fontFamily: sintony.style.fontFamily,
       fontWeight: "bold",
       fontSize: "19px",
       letterSpacing: "0.15px",
+      marginBottom: "10px",
     },
     body1: {
       fontWeight: "normal",
@@ -109,6 +115,8 @@ let theme = createTheme({
       fontWeight: "normal",
       fontSize: "22px",
       letterSpacing: "0.15px",
+      lineHeight: "1.5",
+      marginBottom: "20px",
     },
     subtitle2: {
       fontFamily: sintony.style.fontFamily,
@@ -118,7 +126,7 @@ let theme = createTheme({
     },
 
     caption: {
-      fontWeight: "lighter",
+      fontWeight: "light",
       fontSize: "14px",
       letterSpacing: "0.4px",
     },
@@ -213,9 +221,9 @@ theme.components = {
     styleOverrides: {
       root: {
         borderRadius: 50,
-        // whiteSpace: 'nowrap',
         textAlign: "center",
         minWidth: "max-content",
+        margin: "10px auto",
       },
     },
   },

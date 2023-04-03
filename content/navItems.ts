@@ -9,24 +9,32 @@ const navItems: navItem[] = [
     text: "Home",
   },
   {
-    href: "get-started",
+    href: "/get-started",
     text: "Get Started",
   },
   {
-    href: "get-involved",
+    href: "/get-involved",
     text: "Get Involved",
   },
   {
-    href: "why-vacate",
+    href: "/why-vacate",
     text: "Why Vacate",
   },
   {
-    href: "donate",
+    href: "/about",
+    text: "About Us",
+  },
+  {
+    href: "/donate",
     text: "Donate",
   },
   {
-    href: "contact",
+    href: "/contact",
     text: "Contact",
+  },
+  {
+    href: "/calculator/head-initial-1-cont",
+    text: "Access Calculator",
   },
 ];
 

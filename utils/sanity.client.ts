@@ -1,6 +1,6 @@
 import { createClient } from "next-sanity";
 
-import { apiVersion, dataset, projectId, useCdn } from "./sanity.api";
+import { apiVersion, dataset, projectId } from "./sanity.api";
 import {
   calculatorConfigQuery,
   calculatorPagePaths,
@@ -9,7 +9,7 @@ import {
 
 const sanityClient = (token?: string) => {
   return projectId
-    ? createClient({ projectId, dataset, apiVersion, useCdn, token })
+    ? createClient({ projectId, dataset, apiVersion, useCdn: false, token })
     : null;
 };
 

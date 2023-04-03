@@ -60,7 +60,7 @@ const getInvolvedContent = {
       "Share the calculator with your community",
     ],
     text: [
-      "We appreciate finding new ways to work with organisations and people who share our goals and want to help us raise awareness. Whether it be guidance or support, we'd love to hear more.",
+      "We appreciate finding new ways to work with organizations and people who share our goals and want to help us raise awareness. Whether it be guidance or support, we'd love to hear more.",
       "Do you know someone who could benefit from our calculator? Want to help us spread the word around your community?",
       "Share our mission on your social media or send it to someone you know needs it.",
     ],

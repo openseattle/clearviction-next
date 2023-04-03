@@ -5,7 +5,7 @@
     "subheading": "If you have convictions in Washington, you can check your eligibility to vacate your conviction for free in less than 10 minutes!",
     "ctaLink": "/calculator/head-initial-1-cont",
     "ctaText": "Access Calculator",
-    "imgsrc": "/illustrations/home-hero-image.svg"
+    "imgsrc": "/illustrations/home-hero-2color.svg"
   },
   "sectionNavs": [
     { "label": "How it works", "href": "#how-it-works" },
@@ -23,19 +23,19 @@
           "id": "how-it-works-item1",
           "title": "Inform",
           "body": "We break down the laws into understandable language.",
-          "imgsrc": "/illustrations/team-building.svg"
+          "imgsrc": "/illustrations/teamwork.svg"
         },
         {
           "id": "how-it-works-item2",
           "title": "Assess",
           "body": "You answer a few simple yes/no questions.",
-          "imgsrc": "/illustrations/calculator.svg"
+          "imgsrc": "/illustrations/checklist.svg"
         },
         {
           "id": "how-it-works-item3",
           "title": "Calculate",
           "body": "This helps determine your vacation eligibility in Washington.",
-          "imgsrc": "/illustrations/notetaking.svg"
+          "imgsrc": "/illustrations/teamwork-2.svg"
         }
       ]
     },
@@ -54,7 +54,7 @@
           "id": "why-vacate-item2",
           "title": "Employment",
           "body": "Reduce barriers to finding and obtaining employment.",
-          "imgsrc": "/illustrations/checklist.svg"
+          "imgsrc": "/illustrations/employment.svg"
         },
         {
           "id": "why-vacate-item3",

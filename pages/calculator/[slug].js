@@ -19,11 +19,15 @@ import {
   getCalculatorPagePaths,
 } from "utils/sanity.client";
 
-import ExternalButton from "../../components/ExternalButton";
+import CalcSharebtn from "../../components/CalcSharebtn";
+import externalLinks from "../../components/externalLinks";
 import portableTextComponents from "../../utils/portableTextComponents";
 
 export default function CalculatorSlugRoute({ page, calculatorConfig }) {
   const [open, setOpen] = useState(false);
+
+  externalLinks();
+
   return (
     <>
       <Container
@@ -56,6 +60,7 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
                     variant="contained"
                     color="primary"
                     href={href}
+                    sx={{ width: "100%" }}
                   >
                     {choice.label}
                   </Button>
@@ -65,6 +70,7 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
               <Button
                 variant="outlined"
                 color="primary"
+                sx={{ width: "100%" }}
                 onClick={() => setOpen(true)}
               >
                 {calculatorConfig.unknownAnswer.promptText}
@@ -72,7 +78,7 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
             )}
             {page.isFinalPage && (
               <>
-                <ExternalButton
+                <Button
                   variant="contained"
                   color="primary"
                   href={
@@ -82,7 +88,8 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
                   }
                 >
                   {calculatorConfig.feedback.linkText}
-                </ExternalButton>
+                </Button>
+                <CalcSharebtn />
                 <Link
                   sx={{ textAlign: "center" }}
                   href={
@@ -134,6 +141,29 @@ export default function CalculatorSlugRoute({ page, calculatorConfig }) {
           </Button>
         </DialogActions>
       </Dialog>
+      <Box
+        sx={{
+          textAlign: "center",
+          mb: "30px",
+          color: "black",
+          fontWeight: 500,
+          fontSize: "16px",
+        }}
+      >
+        <Link
+          href={calculatorConfig.errorReportingForm.errorReportingFormUrl}
+          sx={{
+            color: "text.primary",
+            textDecoration: "none",
+            "&:hover": {
+              color: "primary.main",
+              textDecoration: "underline",
+            },
+          }}
+        >
+          {calculatorConfig.errorReportingForm.linkText}{" "}
+        </Link>
+      </Box>
     </>
   );
 }
