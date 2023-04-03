@@ -19,9 +19,9 @@ import {
   getCalculatorPagePaths,
 } from "utils/sanity.client";
 
+import CalcSharebtn from "../../components/CalcSharebtn";
 import externalLinks from "../../components/externalLinks";
 import portableTextComponents from "../../utils/portableTextComponents";
-import CalcSharebtn from "../../components/CalcSharebtn";
 
 export default function CalculatorSlugRoute({ page, calculatorConfig }) {
   const [open, setOpen] = useState(false);
